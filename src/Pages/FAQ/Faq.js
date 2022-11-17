@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Faqdetails from './Faqdetails';
+
 
 const Faq = () => {
+    const [faq, setFaq] = useState([]);
+    useEffect(() => {
+        fetch(`http://localhost:5000/homepage`)
+            .then(res => res.json())
+            .then(data => setFaq(data));
+    }, []);
     return (
-        <div className='mt-5 text-center'>
-            <h2>what is product</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, perferendis?</p>
-            <h2 className='mt-2'>what is product</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, perferendis?</p>
-            <h2 className='mt-2'>what is product</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, perferendis?</p>
+        <div>
+ {
+                    faq?.map(tool => <Faqdetails
+                        key={tool._id}
+                        tool={tool}
+                    >
+
+                    </Faqdetails>)
+                }
         </div>
     );
 };
