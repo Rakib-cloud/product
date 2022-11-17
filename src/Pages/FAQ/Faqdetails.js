@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Faqdetails = ({ tool }) => {
-    const { _id, faq1, faq2, faq1ans1, faq2ans2 } = tool;
+    const {  faq1, faq2, faq1ans1, faq2ans2 } = tool;
     return (
         <div className='mt-5 text-center'>
         <h2>{faq1}</h2>
