@@ -111,6 +111,10 @@ const Compare = () => {
   }
   const clicked = true;
 
+
+
+//calculation work 
+
   return (
     <>
       <div className='flex justify-end mr-5'>
@@ -226,7 +230,7 @@ const Compare = () => {
    </form>
                    {/* bank calculation end  */}
                    <div className='mt-3'>
-                   <h6 class="ms-5 ps-5"> Monthlypayment: <span id="month-payment">0</span></h6>
+                   <h6 class="ms-5 ps-5"> Monthly-payment: <span id="month-payment">0</span></h6>
                    <h6 class="ms-5 ps-5"> Interest rate: <span id="total-rate">0</span></h6>
                    <h6 class="ms-5 ps-5"> Total months: <span id="total-month">0</span></h6>
                    </div>
