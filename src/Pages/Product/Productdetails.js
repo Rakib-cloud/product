@@ -13,7 +13,7 @@ const Productdetails = ({ tool }) => {
                     {/* <p>product Details:{desc}</p> */}
                     <p>price:{price}</p>
                     <div class="card-actions">
-                    <Link to={`/compare/${_id}`} className="btn btn-success" >Compare</Link>
+                    <Link to={`/compare/${_id}`} className= "btn bg-slate-400" >Compare</Link>
                     </div>
                 </div>
             </div>
