@@ -1,3 +1,4 @@
+
 //function for Getinput value into :Form(modals of EMI button)
 
 function getinputvalue(inputid){
@@ -65,40 +66,52 @@ console.log(bankname,month,advance,productprice)
 
 //calculation function call 
 
+const dbbl3=document.getElementById('dbbl3rate').innerText;
+const dbbl6=document.getElementById('dbbl6rate').innerText;
+const dbbl12=document.getElementById('dbbl12rate').innerText;
 
+
+const scb3=document.getElementById('scb3rate').innerText;
+const scb6=document.getElementById('scb6rate').innerText;
+const scb12=document.getElementById('scb12rate').innerText;
+
+
+const ebl3=document.getElementById('ebl3rate').innerText;
+const ebl6=document.getElementById('ebl6rate').innerText;
+const ebl12=document.getElementById('ebl12rate').innerText;
 
 if (bankname==='DBBL') {
   //if month 3,6,12 then
 if(month==3){
-    calculation(month,advance,2.5,productprice);
+    calculation(month,advance,dbbl3,productprice);
   }
   if(month==6){
-      calculation(month,advance,4,productprice);
+      calculation(month,advance,dbbl6,productprice);
   }
   if(month==12){
-      calculation(month,advance,5.5,productprice);
+      calculation(month,advance,dbbl12,productprice);
   }
 } 
 
 if(bankname==='SCB'){
   if(month==3){
-    calculation(month,advance,4,productprice);
+    calculation(month,advance,scb3,productprice);
   }
   if(month==6){
-      calculation(month,advance,5,productprice);
+      calculation(month,advance,scb6,productprice);
   }
   if(month==12){
-      calculation(month,advance,6,productprice);
+      calculation(month,advance,scb12,productprice);
   }
 }if(bankname==='EBL'){
   if(month==3){
-    calculation(month,advance,3,productprice);
+    calculation(month,advance,ebl3,productprice);
   }
   if(month==6){
-      calculation(month,advance,4,productprice);
+      calculation(month,advance,ebl6,productprice);
   }
   if(month==12){
-      calculation(month,advance,5,productprice);
+      calculation(month,advance,ebl12,productprice);
   }
 }
 

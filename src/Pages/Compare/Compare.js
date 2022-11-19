@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import './Add';
+
 const Compare = () => {
   const { _id } = useParams();
   const [product, setProduct] = useState([]);
+  const [rate, setRate] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/product/${_id}`)
@@ -12,7 +15,15 @@ const Compare = () => {
   }, [_id]);
 
 
+
   
+   useEffect(() => {
+    fetch(`http://localhost:5000/rate`)
+      .then(res => res.json())
+      .then(data => setRate(data[0]));
+  }, []);
+
+console.log(rate.dbbl3)
 
   //add to compare works starts
   const handleClick = () => {
@@ -232,6 +243,18 @@ const Compare = () => {
                    <div className='mt-3'>
                    <h6 class="ms-5 ps-5"> Monthly-payment: <span id="month-payment">0</span></h6>
                    <h6 class="ms-5 ps-5"> Interest rate: <span id="total-rate">0</span></h6>
+                   <div  style={{display: 'none'}}>
+                    <p id="dbbl3rate">{rate.dbbl3}</p>
+                    <p id="dbbl6rate">{rate.dbbl6}</p>
+                    <p id="dbbl12rate">{rate.dbbl12}</p>
+                    <p id="scb3rate">{rate.scb3}</p>
+                    <p id="scb6rate">{rate.scb6}</p>
+                    <p id="scb12rate">{rate.scb12}</p>
+                    <p id="ebl3rate">{rate.ebl3}</p>
+                    <p id="ebl3rate">{rate.ebl6}</p>
+                    <p id="ebl3rate">{rate.ebl12}</p>
+                   </div>
+                  
                    <h6 class="ms-5 ps-5"> Total months: <span id="total-month">0</span></h6>
                    </div>
                     <div class="modal-action">
