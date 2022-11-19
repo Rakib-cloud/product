@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import './Add';
+//import './Add';
 
 const Compare = () => {
   const { _id } = useParams();
@@ -123,6 +123,129 @@ console.log(rate.dbbl3)
   const clicked = true;
 
 
+//function for Getinput value into :Form(modals of EMI button)
+
+function getinputvalue(inputid){
+  const inputfeild=document.getElementById(inputid);
+           const inputamounttext=inputfeild.value; 
+          
+           return inputamounttext;
+}
+
+
+
+
+
+
+//function for EMI calculation : 
+function calculation(month,advance,rate,price){
+  const totalelement=document.getElementById('month-payment');
+ 
+
+  //emi calculation :
+
+  //after advance payment (totalproduct balance-advance)
+   const newbal=price-advance;
+
+  //emi calculation method:
+
+  const r = parseFloat(rate)/12/100;
+  const P = newbal;
+  const n = month;
+
+  const EMI = (P*r* Math.pow((1+r),n)) / (Math.pow((1+r),n)-1);
+  const totalInterest =(EMI * n) - P;
+  const totalPayment  = (totalInterest + parseFloat(P)).toFixed(2);
+
+  //emi monthly set 
+  
+  totalelement.innerText=totalPayment;
+  //rate set
+  const totalelement2=document.getElementById('total-rate');
+  totalelement2.innerText=rate;    
+  //total month set
+  const totalelement3=document.getElementById('total-month');
+  totalelement3.innerText=month; 
+
+
+}
+// const btn = document.getElementById('calculate-button');
+// console.log(btn);
+
+// btn?.addEventListener('click', () => {
+// console.log('btn clicked');
+// });
+const handleClick2 = () =>{
+  
+  //get input value
+  const bankname=getinputvalue('bank');
+
+  const month=getinputvalue('months');
+ 
+  const advance=getinputvalue('payment');
+  const totalelement=document.getElementById('product-price');
+ const productprice=totalelement.innerText;
+     
+console.log(bankname,month,advance,productprice)
+
+//calculation function call 
+// const dbblrate=rate.dbbl3;
+// console.log(dbblrate)
+// const dbbl3=document.getElementById('dbbl3rate').innerText;
+// const dbbl6=document.getElementById('dbbl6rate').innerText;
+// const dbbl12=document.getElementById('dbbl12rate').innerText;
+
+
+// const scb3=document.getElementById('scb3rate').innerText;
+// const scb6=document.getElementById('scb6rate').innerText;
+// const scb12=document.getElementById('scb12rate').innerText;
+
+
+// const ebl3=document.getElementById('ebl3rate').innerText;
+// const ebl6=document.getElementById('ebl6rate').innerText;
+// const ebl12=document.getElementById('ebl12rate').innerText;
+
+if (bankname==='DBBL') {
+  //if month 3,6,12 then
+if(month==3){
+    calculation(month,advance,rate.dbbl3,productprice);
+  }
+  if(month==6){
+      calculation(month,advance,rate.dbbl6,productprice);
+  }
+  if(month==12){
+      calculation(month,advance,rate.dbbl12,productprice);
+  }
+} 
+
+if(bankname==='SCB'){
+  if(month==3){
+    calculation(month,advance,rate.scb3,productprice);
+  }
+  if(month==6){
+      calculation(month,advance,rate.scb6,productprice);
+  }
+  if(month==12){
+      calculation(month,advance,rate.scb12,productprice);
+  }
+}if(bankname==='EBL'){
+  if(month==3){
+    calculation(month,advance,rate.ebl3,productprice);
+  }
+  if(month==6){
+      calculation(month,advance,rate.ebl6,productprice);
+  }
+  if(month==12){
+      calculation(month,advance,rate.ebl12,productprice);
+  }
+}
+
+
+  
+ 
+
+}
+
 
 //calculation work 
 
@@ -233,7 +356,7 @@ console.log(rate.dbbl3)
      <div class="md:flex md:items-center">
        <div class="md:w-1/3"></div>
        <div class="md:w-2/3">
-         <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold rounded-full" type="button" id="calculate-button">
+         <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold rounded-full" type="button" id="calculate-button"  onClick={handleClick2}>
           Calculate
          </button>
        </div>
@@ -243,7 +366,7 @@ console.log(rate.dbbl3)
                    <div className='mt-3'>
                    <h6 class="ms-5 ps-5"> Monthly-payment: <span id="month-payment">0</span></h6>
                    <h6 class="ms-5 ps-5"> Interest rate: <span id="total-rate">0</span></h6>
-                   <div  style={{display: 'none'}}>
+                   {/* <div  style={{display: 'none'}}>
                     <p id="dbbl3rate">{rate.dbbl3}</p>
                     <p id="dbbl6rate">{rate.dbbl6}</p>
                     <p id="dbbl12rate">{rate.dbbl12}</p>
@@ -253,7 +376,7 @@ console.log(rate.dbbl3)
                     <p id="ebl3rate">{rate.ebl3}</p>
                     <p id="ebl3rate">{rate.ebl6}</p>
                     <p id="ebl3rate">{rate.ebl12}</p>
-                   </div>
+                   </div> */}
                   
                    <h6 class="ms-5 ps-5"> Total months: <span id="total-month">0</span></h6>
                    </div>

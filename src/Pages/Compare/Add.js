@@ -1,4 +1,3 @@
-
 //function for Getinput value into :Form(modals of EMI button)
 
 function getinputvalue(inputid){
@@ -51,8 +50,8 @@ function calculation(month,advance,rate,price){
 // btn?.addEventListener('click', () => {
 // console.log('btn clicked');
 // });
-document.getElementById('calculate-button').addEventListener('click',function(){
-
+const handleClick2 = () =>{
+  
   //get input value
   const bankname=getinputvalue('bank');
 
@@ -119,6 +118,6 @@ if(bankname==='SCB'){
   
  
 
-});
+}
 
   
